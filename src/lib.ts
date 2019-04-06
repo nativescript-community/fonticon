@@ -1,32 +1,41 @@
-export const mapCss = (data: any, debug?: boolean): object => {
-  const map = {};
-  const sets = data.split('}');
+// import { parse } from 'tns-core-modules/css';
+import { profile } from 'tns-core-modules/profiling';
 
-  for (const set of sets) {
-    const pair = set.split(/:before\s*{/);
-    const keyGroups = pair[0];
-    const keys = keyGroups.split(',');
-    if (pair[1]) {
-      const value = cleanValue(pair[1]);
-      if (!value) {
-        continue;
-      }
-      for (let key of keys) {
-        key = key.trim().slice(1).split(':before')[0];
-        map[key] = String.fromCharCode(parseInt(value.substring(2), 16));
-        if (debug) {
-          console.log(`${key}: ${value}`);
+export const mapCss = profile('mapCss', (data: string, debug?: boolean): object => {
+    const map = {};
+    // const test = parse(data, {});
+    // console.log(test);
+    const sets = data.split('}');
+
+    for (const set of sets) {
+        const pair = set.split('{');
+        if (pair[1]) {
+            const keyGroups = pair[0];
+            const keys = keyGroups.split(',');
+            const value = cleanValue(pair[1]);
+            if (!value) {
+                continue;
+            }
+            const realVal = String.fromCharCode(parseInt(value, 16));
+            for (let key of keys) {
+                key = key
+                    .trim() // remove spaces
+                    .slice(1) // remove the .
+                    .split(':before')[0]; // remove :before and anything after
+                map[key] = realVal;
+                if (debug) {
+                    console.log(`${key}: ${value} ${realVal}`);
+                }
+            }
         }
-      }
     }
-  }
-  return map;
-};
+    return map;
+});
 
 export const cleanValue = (val: string): string | void => {
-  const matches = val.match(/content\s*:\s*["|']\\f([^"|^']+)["|']/i)
-  if (matches) {
-    return `\\uf${matches[1]}`;
-  }
-  return void 0;
+    const array = val.trim().split('"');
+    if (array.length > 1) {
+        return array[array.length - 2].substring(1);
+    }
+    return void 0;
 };
