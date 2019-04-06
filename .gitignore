@@ -1,11 +1,14 @@
-.DS_Store
 *.js
 *.js.map
-*.d.ts
 *.log
-.ts-node/
+!scripts/*.js
 demo/app/*.js
 demo/*.d.ts
+demo/lib
 demo/platforms
 demo/node_modules
 node_modules
+.idea/
+**/.DS_Store
+plugin/**/*.d.ts
+/plugin/package-lock.json
