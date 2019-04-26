@@ -71,14 +71,21 @@ export class TNSFontIcon {
     }
 }
 
-export function fonticon(value: string): string {
-    if (value) {
+export function fonticon(values : string | string[]): string {
+    if (!Array.isArray(values)) {
+        values = [values]
+    }
+    for (let index = 0; index < values.length; index++) {
+        const value = values[index];
         if (value.indexOf('-') > -1) {
             const prefix = value.split('-')[0];
-            return TNSFontIcon.css[prefix][value];
+            const result = TNSFontIcon.css[prefix][value]
+            if (result) {
+                return result;
+            }
         } else {
             console.log("Fonticon classname did not contain a prefix. i.e., 'fa-bluetooth'");
         }
     }
-    return value;
+    return undefined;
 }
