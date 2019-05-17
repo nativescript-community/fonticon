@@ -29,6 +29,18 @@ export class TNSFontIcon {
             });
         }
     );
+    private static loadFileSync = profile('loadCSS', (name: string, path: string) => {
+        if (TNSFontIcon.debug) {
+            console.log('----------');
+            console.log(`Loading collection '${name}' from file: ${path}`);
+        }
+        const cssFile = knownFolders.currentApp().getFile(path);
+        // return new Promise((resolve, reject) => {
+        const data = cssFile.readTextSync();
+        const map = lib.mapCss(data, TNSFontIcon.debug);
+        TNSFontIcon.css[name] = map;
+        // });
+    });
     private static parseAndMapCSS = profile('parseAndMapCSS', (name: string, data: string) => {
         if (TNSFontIcon.debug) {
             console.log('----------');
@@ -56,6 +68,38 @@ export class TNSFontIcon {
                 }
             })
         );
+
+        // if (cnt < fontIconCollections.length) {
+        //     loadFile(TNSFontIcon.paths[currentName]).then(() => {
+        //         cnt++;
+        //         return loadFiles().then(() => {
+        //             resolve();
+        //         });
+        //     });
+        // } else {
+        //     resolve();
+        // }
+        // });
+    }
+    public static loadCssSync = () => {
+        if (TNSFontIcon.debug) {
+            console.log(`Collections to load: ${TNSFontIcon.paths}`);
+        }
+        // return new Promise(() => {
+        // return Promise.all(
+        Object.keys(TNSFontIcon.paths).map(currentName => {
+            TNSFontIcon.css[currentName] = {};
+            const data = TNSFontIcon.paths[currentName];
+            if (!data) {
+                return;
+            }
+            if (typeof data === 'string') {
+                return TNSFontIcon.loadFileSync(currentName, data);
+            } else {
+                return TNSFontIcon.parseAndMapCSS(currentName, data[0][1]);
+            }
+        });
+        // );
 
         // if (cnt < fontIconCollections.length) {
         //     loadFile(TNSFontIcon.paths[currentName]).then(() => {
