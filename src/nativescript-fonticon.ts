@@ -116,6 +116,9 @@ export class TNSFontIcon {
 }
 
 export function fonticon(values: string | string[]): string {
+    if (!values) {
+        return undefined;
+    }
     if (!Array.isArray(values)) {
         values = [values];
     }
@@ -128,7 +131,8 @@ export function fonticon(values: string | string[]): string {
                 return result;
             }
         } else {
-            console.log("Fonticon classname did not contain a prefix. i.e., 'fa-bluetooth'");
+            // console.log("Fonticon classname did not contain a prefix. i.e., 'fa-bluetooth'");
+            return value;
         }
     }
     return undefined;
