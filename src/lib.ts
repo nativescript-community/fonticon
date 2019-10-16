@@ -24,7 +24,7 @@ export const mapCss = profile(
                     key = key
                         .trim() // remove spaces
                         .slice(1) // remove the .
-                        .split(':before')[0]; // remove :before and anything after
+                        .split(':before')[0].replace(':', ''); // remove :before and anything after
                     map[key] = realVal;
                     if (debug) {
                         console.log(`${key}: ${value} ${realVal}`);

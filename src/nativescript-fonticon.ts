@@ -122,11 +122,17 @@ export function fonticon(values: string | string[]): string {
     if (!Array.isArray(values)) {
         values = [values];
     }
+    if (TNSFontIcon.debug) {
+        console.log(`fonticon: ${values}`);
+    }
     for (let index = 0; index < values.length; index++) {
         const value = values[index];
         if (value.indexOf('-') > -1) {
             const prefix = value.split('-')[0];
             const result = TNSFontIcon.css[prefix][value];
+            if (TNSFontIcon.debug) {
+                console.log(`found fonticon ${result} for ${values}`);
+            }
             if (result) {
                 return result;
             }
@@ -135,5 +141,5 @@ export function fonticon(values: string | string[]): string {
             return value;
         }
     }
-    return undefined;
+    return values[0];
 }
