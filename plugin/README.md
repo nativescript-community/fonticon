@@ -65,8 +65,8 @@ Then modify the css file to isolate just the icon fonts needed. [Watch this vide
 
 * Configure your fonts and setup the converter:
 
-```
-import * as application from 'application';
+```typescript
+import * as application from '@nativescript/core/application';
 import {FontIcon, fonticon} from '@nativescript-community/fonticon';
 
 FontIcon.debug = true; <-- Optional. Will output the css mapping to console.
@@ -77,12 +77,12 @@ FontIcon.paths = {
 FontIcon.loadCss();
 
 application.setResources( { fonticon } );
-application.start({ moduleName: 'main-page' });
+application.run({ moduleName: 'main-page' });
 ```
 
 * Use the Converter, for example:
 
-```
+```xml
 <Label class="fa" text="{{'fa-bluetooth' | fonticon}}"></Label> 
 ``` 
 
@@ -98,7 +98,7 @@ Demo FontAwesome (Android) |  Demo Ionicons (Android)
 
 In this case, you have to copy and import each `ttf` file and associate it with the proper class:
 
-```
+```css
 .fas {
   font-family: Font Awesome 5 Free, fa-solid-800;
 }
@@ -109,7 +109,7 @@ In this case, you have to copy and import each `ttf` file and associate it with 
 
 but still you will import the `css` only once with the `fa` prefix:
 
-```
+```typescript
 FontIcon.paths = {
   'fa': 'font-awesome.css'
 };
@@ -120,15 +120,6 @@ FontIcon.paths = {
 If using [Angular](https://angular.io/), use this instead:
 
 * [nativescript-ng2-fonticon](https://github.com/NathanWalker/nativescript-ng2-fonticon)
-
-## Why the TNS prefixed name?
-
-`TNS` stands for **T**elerik **N**ative**S**cript
-
-iOS uses classes prefixed with `NS` (stemming from the [NeXTSTEP](https://en.wikipedia.org/wiki/NeXTSTEP) days of old):
-https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/
-
-To avoid confusion with iOS native classes, `TNS` is used instead.
 
 ## Credits
 

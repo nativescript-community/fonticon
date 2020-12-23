@@ -121,15 +121,6 @@ If using [Angular](https://angular.io/), use this instead:
 
 * [nativescript-ng2-fonticon](https://github.com/NathanWalker/nativescript-ng2-fonticon)
 
-## Why the TNS prefixed name?
-
-`TNS`**N**ative**S**cript
-
-iOS uses classes prefixed with `NS` (stemming from the [NeXTSTEP](https://en.wikipedia.org/wiki/NeXTSTEP) days of old):
-https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/
-
-To avoid confusion with iOS native classes, `TNS` is used instead.
-
 ## Credits
 
 Idea came from [Bradley Gore](https://github.com/bradleygore)'s [post here](http://www.blog.bradleygore.com/2016/03/28/font-icons-in-nativescript/).
