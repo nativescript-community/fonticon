@@ -9,7 +9,7 @@
 		}
 	},
 	"dependencies": {
-		"nativescript-fonticon": "file:../src",
+		"@nativescript-community/fonticon": "file:../src",
 		"tns-core-modules": "^4.2.0"
 	},
 	"devDependencies": {

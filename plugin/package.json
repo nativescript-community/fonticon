@@ -1,9 +1,9 @@
 {
-    "name": "nativescript-akylas-fonticon",
+    "name": "@nativescript-community/fonticon",
     "version": "2.0.7",
     "description": "Use custom font icon collections seamlessly with NativeScript.",
-    "main": "nativescript-fonticon",
-    "typings": "nativescript-fonticon.d.ts",
+    "main": "index",
+    "typings": "index.d.ts",
     "nativescript": {
         "platforms": {
             "android": "2.0.0",
@@ -12,7 +12,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Akylas/nativescript-fonticon.git"
+        "url": "https://github.com/nativescript-community/fonticon.git"
     },
     "keywords": [
         "NativeScript",
@@ -35,9 +35,9 @@
         }
     ],
     "bugs": {
-        "url": "https://github.com/Akylas/nativescript-fonticon/issues"
+        "url": "https://github.com/nativescript-community/fonticon/issues"
     },
-    "license": "https://github.com/Akylas/nativescript-fonticon/blob/master/LICENSE",
-    "homepage": "https://github.com/Akylas/nativescript-fonticon",
+    "license": "https://github.com/nativescript-community/fonticon/blob/master/LICENSE",
+    "homepage": "https://github.com/nativescript-community/fonticon",
     "readmeFilename": "README.md"
 }

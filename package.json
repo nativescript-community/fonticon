@@ -1,8 +1,8 @@
 {
-    "name": "nativescript-fonticon",
+    "name": "@nativescript-community/fonticon",
     "version": "2.0.0",
     "description": "Use custom font icon collections seamlessly with NativeScript.",
-    "main": "nativescript-fonticon",
+    "main": "index",
     "typings": "index.d.ts",
     "nativescript": {
         "platforms": {
@@ -12,17 +12,16 @@
     },
     "scripts": {
         "tsc": "tsc -skipLibCheck",
-        "build": "npm run tsc && cp README.md plugin/",
+        "build": "cp README.md plugin/ && npm run tsc",
         "demo.ios": "npm run preparedemo && cd demo && tns run ios --emulator",
         "demo.android": "npm run preparedemo && cd demo && tns run android --emulator",
-        "preparedemo": "npm run build && cd demo && tns plugin remove nativescript-fonticon && tns plugin add src && tns install && npx rimraf -- package-lock.json",
+        "preparedemo": "npm run build && cd demo && tns plugin remove @nativescript-community/fonticon && tns plugin add src && tns install && npx rimraf -- package-lock.json",
         "setup": "cd demo && npm install && cd src && npm run build && cd demo && tns plugin add plugin && cd src",
-        "test": "cross-env TS_NODE_PROJECT=test/tsconfig.json mocha --require ts-node/register --watch-extensions ts \"test/**/*spec.ts\"",
-        "lint": "tslint --project ./ --format stylish"
+        "test": "cross-env TS_NODE_PROJECT=test/tsconfig.json mocha --require ts-node/register --watch-extensions ts \"test/**/*spec.ts\""
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/NathanWalker/nativescript-fonticon.git"
+        "url": "https://github.com/nativescript-community/fonticon.git"
     },
     "keywords": [
         "NativeScript",
@@ -45,23 +44,25 @@
         }
     ],
     "bugs": {
-        "url": "https://github.com/NathanWalker/nativescript-fonticon/issues"
+        "url": "https://github.com/nativescript-community/fonticon/issues"
     },
-    "license": "https://github.com/NathanWalker/nativescript-fonticon/blob/master/LICENSE",
-    "homepage": "https://github.com/NathanWalker/nativescript-fonticon",
+    "license": "https://github.com/nativescript-community/fonticon/blob/master/LICENSE",
+    "homepage": "https://github.com/nativescript-community/fonticon",
     "readmeFilename": "README.md",
     "devDependencies": {
-        "@fortawesome/fontawesome-free": "5.8.1",
-        "@types/mocha": "^5.2.6",
-        "@types/node": "^10.10.0",
-        "cross-env": "^5.2.0",
-        "mocha": "^6.0.2",
-        "tns-core-modules": "^5.3.1",
-        "tns-platform-declarations": "^5.3.1",
-        "ts-node": "^8.0.3",
-        "tslint": "5.15.0",
-        "tslint-config-prettier": "^1.18.0",
-        "tslint-config-standard": "^8.0.1",
-        "typescript": "^3.4.2"
+        "@commitlint/cli": "^11.0.0",
+        "@commitlint/config-conventional": "^11.0.0",
+        "@nativescript/core": "~7.0.13",
+        "@nativescript/webpack": "~3.0.8",
+        "@types/node": "^13.13.36",
+        "@types/mocha": "^8.2.0",
+        "@typescript-eslint/eslint-plugin": "4.11.0",
+        "@typescript-eslint/parser": "4.11.0",
+        "cpy-cli": "^3.1.1",
+        "eslint": "7.16.0",
+        "husky": "^4.3.6",
+        "mocha": "^8.2.1",
+        "lerna": "^3.22.1",
+        "typescript": "~3.9.7"
     }
 }

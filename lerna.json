@@ -1,0 +1,11 @@
+{
+  "packages": [
+    "plugin"
+  ],
+  "version": "2.0.7",
+  "command": {
+    "publish": {
+      "conventionalCommits": true
+    }
+  }
+}
