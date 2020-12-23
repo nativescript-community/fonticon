@@ -17,7 +17,10 @@
         "demo.android": "npm run preparedemo && cd demo && tns run android --emulator",
         "preparedemo": "npm run build && cd demo && tns plugin remove @nativescript-community/fonticon && tns plugin add src && tns install && npx rimraf -- package-lock.json",
         "setup": "cd demo && npm install && cd src && npm run build && cd demo && tns plugin add plugin && cd src",
-        "test": "cross-env TS_NODE_PROJECT=test/tsconfig.json mocha --require ts-node/register --watch-extensions ts \"test/**/*spec.ts\""
+        "test": "cross-env TS_NODE_PROJECT=test/tsconfig.json mocha --require ts-node/register --watch-extensions ts \"test/**/*spec.ts\"",
+        "publish": "npm run build && lerna publish --create-release=github",
+        "commitmsg": "commitlint -e $GIT_PARAMS",
+        "precommit": "lint-staged"
     },
     "repository": {
         "type": "git",
@@ -64,5 +67,10 @@
         "mocha": "^8.2.1",
         "lerna": "^3.22.1",
         "typescript": "~3.9.7"
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
     }
 }
