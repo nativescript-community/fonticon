@@ -67,14 +67,14 @@ Then modify the css file to isolate just the icon fonts needed. [Watch this vide
 
 ```
 import * as application from 'application';
-import {TNSFontIcon, fonticon} from '@nativescript-community/fonticon';
+import {FontIcon, fonticon} from '@nativescript-community/fonticon';
 
-TNSFontIcon.debug = true; <-- Optional. Will output the css mapping to console.
-TNSFontIcon.paths = {
+FontIcon.debug = true; <-- Optional. Will output the css mapping to console.
+FontIcon.paths = {
   'fa': 'font-awesome.css',
   'ion': 'ionicons.css'
 };
-TNSFontIcon.loadCss();
+FontIcon.loadCss();
 
 application.setResources( { fonticon } );
 application.start({ moduleName: 'main-page' });
@@ -110,7 +110,7 @@ In this case, you have to copy and import each `ttf` file and associate it with 
 but still you will import the `css` only once with the `fa` prefix:
 
 ```
-TNSFontIcon.paths = {
+FontIcon.paths = {
   'fa': 'font-awesome.css'
 };
 ```

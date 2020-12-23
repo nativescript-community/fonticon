@@ -1,7 +1,7 @@
 import { knownFolders } from '@nativescript/core';
 import { mapCss } from './lib';
 
-export namespace TNSFontIcon {
+export namespace FontIcon {
     export const css: any = {}; // font icon collections containing maps of classnames to unicode
     // eslint-disable-next-line prefer-const
     export let paths: { [k: string]: string | object } = {}; // file paths to font icon collections
@@ -92,15 +92,15 @@ export function fonticon(values: string | string[]): string {
     if (!Array.isArray(values)) {
         values = [values];
     }
-    if (TNSFontIcon.debug) {
+    if (FontIcon.debug) {
         console.log(`fonticon: ${values}`);
     }
     for (let index = 0; index < values.length; index++) {
         const value = values[index];
         if (value.indexOf('-') > -1) {
             const prefix = value.split('-')[0];
-            const result = TNSFontIcon.css[prefix][value];
-            if (TNSFontIcon.debug) {
+            const result = FontIcon.css[prefix][value];
+            if (FontIcon.debug) {
                 console.log(`found fonticon ${result} for ${values}`);
             }
             if (result) {

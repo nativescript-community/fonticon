@@ -1,12 +1,12 @@
 ﻿import * as application from 'application';
-import {TNSFontIcon, fonticon} from '@nativescript-community/fonticon';
+import {FontIcon, fonticon} from '@nativescript-community/fonticon';
 
-TNSFontIcon.debug = true;
-TNSFontIcon.paths = {
+FontIcon.debug = true;
+FontIcon.paths = {
   'fa': 'font-awesome.css',
   'ion': 'ionicons.css'
 };
-TNSFontIcon.loadCss();
+FontIcon.loadCss();
 
 application.setResources({fonticon});
 application.start({ moduleName: 'main-page' });
