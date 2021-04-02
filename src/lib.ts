@@ -12,7 +12,7 @@ export function mapCss(data: string, debug?: boolean) {
             if (!value) {
                 continue;
             }
-            const realVal = String.fromCharCode(parseInt(value, 16));
+            const realVal = String.fromCodePoint(parseInt(value, 16));
             for (let key of keys) {
                 key = key
                     .trim() // remove spaces
